@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Clipboard Copy functionality
   const copyButtons = document.querySelectorAll('.copy-btn');
 
   copyButtons.forEach(button => {
     button.addEventListener('click', () => {
       const card = button.closest('.deck-card');
-      const listText = card.querySelector('.deck-list-raw').innerText.trim();
+      const rawText = card.querySelector('.deck-list-raw').innerText.trim();
+      const cleanList = rawText.replace(/\s*—\s*\$\d+(\.\d{2})?/g, '');
 
-      navigator.clipboard.writeText(listText).then(() => {
+      navigator.clipboard.writeText(cleanList).then(() => {
         const originalText = button.innerText;
-        button.innerText = 'Copied to Clipboard!';
+        button.innerText = 'Copied clean list!';
         button.style.backgroundColor = '#FFCB05';
         button.style.color = '#000';
 
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Category Filtering
   const filterBtns = document.querySelectorAll('.filter-btn');
   const deckCards = document.querySelectorAll('.deck-card');
 
