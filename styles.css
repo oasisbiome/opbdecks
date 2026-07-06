@@ -5,6 +5,7 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -13,9 +14,16 @@ h1 {
 
 h2 {
   font-size: 20px;
+  color: white;
+  margin-bottom: 2px;
 }
 
-/* We simplified the table styles here so they aren't messy in the HTML */
+p {
+  color: #D1D5DB;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 table {
   width: 90%;
   border: 0;
@@ -25,13 +33,12 @@ table {
 }
 
 td {
-  background-color: rgba(30, 32, 46, 0.9); /* Dark overlay so text is readable */
+  background-color: rgba(30, 32, 46, 0.9);
   border-radius: 8px;
   vertical-align: top;
   padding: 20px;
 }
 
-/* Muted border colors so they are less intense */
 td.water { border-top: 3px solid #60a5fa; }
 td.darkness { border-top: 3px solid #c084fc; }
 td.fighting { border-top: 3px solid #f97316; }
@@ -57,4 +64,16 @@ button {
 button:hover {
   background-color: #ffcb05;
   color: #000000;
+}
+
+.price-text {
+  color: #FFCB05;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.details-link {
+  color: #FFCB05;
+  font-weight: bold;
+  text-decoration: none;
 }
