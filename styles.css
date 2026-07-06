@@ -1,1 +1,163 @@
+:root {
+  --bg: #12131C;
+  --card-bg: #1E202E;
+  --accent: #FFCB05;
+  --text: #F0F2F5;
+  --muted: #94A3B8;
+  
+  --water: #38BDF8;
+  --darkness: #A855F7;
+  --fighting: #F97316;
+  --grass: #4ADE80;
+}
 
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 24px;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 32px;
+}
+
+.hero h1 {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--muted);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.deck-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.deck-card.water { border-top-color: var(--water); }
+.deck-card.darkness { border-top-color: var(--darkness); }
+.deck-card.fighting { border-top-color: var(--fighting); }
+.deck-card.grass { border-top-color: var(--grass); }
+
+.deck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.deck-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  color: #000;
+}
+
+.badge.water { background: var(--water); }
+.badge.darkness { background: var(--darkness); color: #fff; }
+.badge.fighting { background: var(--fighting); color: #fff; }
+.badge.grass { background: var(--grass); }
+
+.deck-price {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+
+.strategy {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.deck-list-raw {
+  background: #141522;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
