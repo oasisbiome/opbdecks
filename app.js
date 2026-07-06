@@ -41,3 +41,27 @@ function copyDeck5() {
   navigator.clipboard.writeText(listText);
   alert("Decklist copied to clipboard.");
 }
+
+function copyDeck6() {
+  var listText = document.getElementById("myList6").innerText;
+  navigator.clipboard.writeText(listText);
+  alert("Decklist copied to clipboard.");
+}
+
+function copyDeck7() {
+  var listText = document.getElementById("myList7").innerText;
+  navigator.clipboard.writeText(listText);
+  alert("Decklist copied to clipboard.");
+}
+
+function copyDeck8() {
+  var listText = document.getElementById("myList8").innerText;
+  navigator.clipboard.writeText(listText);
+  alert("Decklist copied to clipboard.");
+}
+
+function copyDeck9() {
+  var listText = document.getElementById("myList9").innerText;
+  navigator.clipboard.writeText(listText);
+  alert("Decklist copied to clipboard.");
+}
