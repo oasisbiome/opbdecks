@@ -1,19 +1,17 @@
-// This running block picks a random background image every time the page loads
 var images = [
+  "https://i.redd.it/g7bsmlohztva1.png",
+  "https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/water-pokemon-chromebook-wallpaper.jpg",
+  "https://i.pinimg.com/736x/07/bd/cb/07bdcb605727348d60ac19d4e8215e06.jpg",
+  "https://www.chromethemer.com/download/hd-wallpapers/pokemon-3840x2160.jpg",
   "https://images5.alphacoders.com/109/thumb-1920-1092839.jpg",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdFFveGe9D9T8dfdR17hoKHrSRCmkLVpoLUSt69NlXBg&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMA5L2b-9B9I7nmvZYaKH_dLj_S9Czm6Gs6nY5vJBPoQ&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7YuFejivtTir2CJu-MdlGhSyQwtDlN-kKL8aIuACqtQ&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcDUH4XaCq037vjr2VsfDGz6AjVzgToLhGtHwdgLSacA&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpdX5CmfWoBT_Ur20Eedz7kB_RiKnDreeASmZVA8-cjw&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbZ_0qThPYxWw0ptnyoAFrCHzAMGW5ErWFpWV4fYWb7g&s=10"
+  "https://pbs.twimg.com/media/GYbQ2oBaAAAwskB.jpg",
+  "https://i.pinimg.com/736x/0c/43/6d/0c436df5549f92d21cfcad66387d156e.jpg",
+  "https://wallpapercave.com/wp/wp10135847.png"
 ];
 
 var randomIndex = Math.floor(Math.random() * images.length);
 document.body.style.backgroundImage = "url('" + images[randomIndex] + "')";
 
-
-// These are our basic copy button functions
 function copyDeck1() {
   var listText = document.getElementById("myList1").innerText;
   navigator.clipboard.writeText(listText);
