@@ -13,6 +13,8 @@
     <p style="color: #FFCB05;">Select a deck card below to view the detailed strategy breakdown and card pricing.</p>
     
     <br>
+    <input type="text" id="deckSearch" onkeyup="searchMyDecks()" placeholder="Search decks by name or type..." style="padding: 6px; font-size: 14px; width: 250px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
+
     <label style="color: white; font-family: Arial; font-weight: bold;">Sort Decks By: </label>
     <select id="deckSorter" onchange="sortMyDecks()" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
       <option value="none">Default Order</option>
@@ -30,7 +32,7 @@
   <center>
     <div id="deckContainer" style="width: 100%; text-align: center;">
 
-      <div class="deck-box water" data-name="Seaking & Dipplin Double Draw Festival" data-price="7.90" data-age="2">
+      <div class="deck-box water" data-name="Seaking & Dipplin Double Draw Festival" data-type="water grass" data-price="7.90" data-age="2">
         <h2>Seaking & Dipplin "Double-Draw" Festival</h2>
         <font color="#60a5fa" size="2"><b>Type: Water / Grass</b></font>
         <br><br>
@@ -40,7 +42,7 @@
         <a href="deck1-festival.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box darkness" data-name="Poison Curse Gengar ex & Hisuian Sneasler" data-price="9.55" data-age="3">
+      <div class="deck-box darkness" data-name="Poison Curse Gengar ex & Hisuian Sneasler" data-type="darkness" data-price="9.55" data-age="3">
         <h2>Poison-Curse Gengar ex & Hisuian Sneasler</h2>
         <font color="#c084fc" size="2"><b>Type: Darkness</b></font>
         <br><br>
@@ -50,7 +52,7 @@
         <a href="deck2-gengar.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box fighting" data-name="Klawf & Hisuian Electrode V Zero Energy Burn" data-price="12.35" data-age="4">
+      <div class="deck-box fighting" data-name="Klawf & Hisuian Electrode V Zero Energy Burn" data-type="fighting lightning" data-price="12.35" data-age="4">
         <h2>Klawf & Hisuian Electrode V "Zero-Energy" Burn</h2>
         <font color="#f97316" size="2"><b>Type: Fighting / Lightning</b></font>
         <br><br>
@@ -60,7 +62,7 @@
         <a href="deck3-klawf.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box darkness" data-name="16 Target United Wings & Ditto Swarm" data-price="8.80" data-age="5">
+      <div class="deck-box darkness" data-name="16 Target United Wings & Ditto Swarm" data-type="darkness colorless" data-price="8.80" data-age="5">
         <h2>16-Target United Wings & Ditto Swarm</h2>
         <font color="#c084fc" size="2"><b>Type: Darkness / Colorless</b></font>
         <br><br>
@@ -70,7 +72,7 @@
         <a href="deck4-wings.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box grass" data-name="Crustle & Toedscruel Discard Lock Stall" data-price="6.70" data-age="3">
+      <div class="deck-box grass" data-name="Crustle & Toedscruel Discard Lock Stall" data-type="grass" data-price="6.70" data-age="3">
         <h2>Crustle & Toedscruel "Discard Lock" Stall</h2>
         <font color="#4ade80" size="2"><b>Type: Grass</b></font>
         <br><br>
@@ -80,7 +82,7 @@
         <a href="deck5-stall.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box fighting" data-name="Iron Thorns ex The Ability Lock" data-price="28.50" data-age="3">
+      <div class="deck-box fighting" data-name="Iron Thorns ex The Ability Lock" data-type="lightning" data-price="28.50" data-age="3">
         <h2>Iron Thorns ex (The Ability Lock)</h2>
         <font color="#f97316" size="2"><b>Type: Lightning</b></font>
         <br><br>
@@ -90,7 +92,7 @@
         <a href="deck6-thorns.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box darkness" data-name="Roaring Moon ex The Instant Knockout" data-price="34.20" data-age="3">
+      <div class="deck-box darkness" data-name="Roaring Moon ex The Instant Knockout" data-type="darkness" data-price="34.20" data-age="3">
         <h2>Roaring Moon ex (The Instant Knockout)</h2>
         <font color="#c084fc" size="2"><b>Type: Darkness</b></font>
         <br><br>
@@ -100,7 +102,7 @@
         <a href="deck7-moon.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box water" data-name="Gholdengo Palkia The Metal Surf" data-price="35.40" data-age="4">
+      <div class="deck-box water" data-name="Gholdengo Palkia The Metal Surf" data-type="metal water" data-price="35.40" data-age="4">
         <h2>Gholdengo Palkia (The Metal Surf)</h2>
         <font color="#60a5fa" size="2"><b>Type: Metal / Water</b></font>
         <br><br>
@@ -110,7 +112,7 @@
         <a href="deck8-gold.html" class="details-link">View deck details &rarr;</a>
       </div>
 
-      <div class="deck-box darkness" data-name="United Wings The Budget Flock" data-price="14.50" data-age="3">
+      <div class="deck-box darkness" data-name="United Wings The Budget Flock" data-type="darkness colorless" data-price="14.50" data-age="3">
         <h2>United Wings (The Budget Flock)</h2>
         <font color="#c084fc" size="2"><b>Type: Darkness / Colorless</b></font>
         <br><br>
