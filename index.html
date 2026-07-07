@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Budget PTCG Decks</title>
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/6q8jmTRB/image-213a399c.png">
+  <link rel="icon" type="image/png" href="https://postimg.cc">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,10 +13,10 @@
     <p style="color: #FFCB05;">Select a deck card below to view the detailed strategy breakdown and card pricing.</p>
     
     <br>
-    <input type="text" id="deckSearch" onkeyup="searchMyDecks()" placeholder="Search decks by name or type..." style="padding: 6px; font-size: 14px; width: 250px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
+    <input type="text" id="deckSearch" onkeyup="var input = this.value.toLowerCase(); var boxes = document.getElementsByClassName('deck-box'); for (var i = 0; i < boxes.length; i++) { var name = boxes[i].getAttribute('data-name').toLowerCase(); var type = boxes[i].getAttribute('data-type').toLowerCase(); if (name.indexOf(input) > -1 || type.indexOf(input) > -1) { boxes[i].style.display = ''; } else { boxes[i].style.display = 'none'; } }" placeholder="Search decks by name or type..." style="padding: 6px; font-size: 14px; width: 250px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
 
     <label style="color: white; font-family: Arial; font-weight: bold;">Sort Decks By: </label>
-    <select id="deckSorter" onchange="sortMyDecks()" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
+    <select id="deckSorter" onchange="var value = this.value; var container = document.getElementById('deckContainer'); var boxes = Array.from(container.getElementsByClassName('deck-box')); boxes.sort(function(a, b) { if (value === 'az') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')); if (value === 'za') return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')); if (value === 'price-low') return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')); if (value === 'price-high') return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')); if (value === 'newest') return parseInt(a.getAttribute('data-age')) - parseInt(b.getAttribute('data-age')); if (value === 'oldest') return parseInt(b.getAttribute('data-age')) - parseInt(a.getAttribute('data-age')); return 0; }); for (var i = 0; i < boxes.length; i++) { container.appendChild(boxes[i]); }" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
       <option value="none">Default Order</option>
       <option value="az">Name: A to Z</option>
       <option value="za">Name: Z to A</option>
@@ -105,6 +105,5 @@
     </div>
   </center>
 
-  <script src="app.js"></script>
 </body>
 </html>
