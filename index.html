@@ -4,19 +4,50 @@
   <title>Budget PTCG Decks</title>
   <link rel="icon" type="image/png" href="https://postimg.cc">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    function doSearch(txt) {
+      var cards = document.getElementsByClassName('deck-box');
+      for (var i = 0; i < cards.length; i++) {
+        var name = cards[i].getAttribute('data-name').toLowerCase();
+        var type = cards[i].getAttribute('data-type').toLowerCase();
+        if (name.includes(txt.toLowerCase()) || type.includes(txt.toLowerCase())) {
+          cards[i].style.display = '';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+
+    function doSort(mode) {
+      var div = document.getElementById('deckContainer');
+      var list = Array.from(div.getElementsByClassName('deck-box'));
+      list.sort(function(a, b) {
+        if (mode === 'az') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+        if (mode === 'za') return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name'));
+        if (mode === 'price-low') return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+        if (mode === 'price-high') return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
+        if (mode === 'newest') return parseInt(a.getAttribute('data-age')) - parseInt(b.getAttribute('data-age'));
+        if (mode === 'oldest') return parseInt(b.getAttribute('data-age')) - parseInt(a.getAttribute('data-age'));
+        return 0;
+      });
+      for (var i = 0; i < list.length; i++) {
+        div.appendChild(list[i]);
+      }
+    }
+  </script>
 </head>
 <body>
 
   <center>
     <h1 style="color: #FFCB05; font-size: 36px;">Overpowered Budget Decks</h1>
-    <p>Tier 2/3 budget decks. Original decks created by AI.</p>
+    <p>Tier 2/3 budget decks. Rogue builds to catch netdeckers off-guard.</p>
     <p style="color: #FFCB05;">Select a deck card below to view the detailed strategy breakdown and card pricing.</p>
     
     <br>
-    <input type="text" id="deckSearch" onkeyup="var input = this.value.toLowerCase(); var boxes = document.getElementsByClassName('deck-box'); for (var i = 0; i < boxes.length; i++) { var name = boxes[i].getAttribute('data-name').toLowerCase(); var type = boxes[i].getAttribute('data-type').toLowerCase(); if (name.indexOf(input) > -1 || type.indexOf(input) > -1) { boxes[i].style.display = ''; } else { boxes[i].style.display = 'none'; } }" placeholder="Search decks by name or type..." style="padding: 6px; font-size: 14px; width: 250px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
+    <input type="text" placeholder="Search..." onkeyup="doSearch(this.value)" style="padding: 6px; font-size: 14px; width: 200px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
 
-    <label style="color: white; font-family: Arial; font-weight: bold;">Sort Decks By: </label>
-    <select id="deckSorter" onchange="var value = this.value; var container = document.getElementById('deckContainer'); var boxes = Array.from(container.getElementsByClassName('deck-box')); boxes.sort(function(a, b) { if (value === 'az') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')); if (value === 'za') return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')); if (value === 'price-low') return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')); if (value === 'price-high') return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')); if (value === 'newest') return parseInt(a.getAttribute('data-age')) - parseInt(b.getAttribute('data-age')); if (value === 'oldest') return parseInt(b.getAttribute('data-age')) - parseInt(a.getAttribute('data-age')); return 0; }); for (var i = 0; i < boxes.length; i++) { container.appendChild(boxes[i]); }" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
+    <label style="color: white; font-family: Arial; font-weight: bold;">Sort: </label>
+    <select onchange="doSort(this.value)" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
       <option value="none">Default Order</option>
       <option value="az">Name: A to Z</option>
       <option value="za">Name: Z to A</option>
@@ -30,7 +61,7 @@
   <br><br>
 
   <center>
-    <div id="deckContainer" style="width: 100%; text-align: center;">
+    <div id="deckContainer">
 
       <div class="deck-box water" data-name="Seaking & Dipplin Double Draw Festival" data-type="water grass" data-price="7.90" data-age="2">
         <h2>Seaking & Dipplin "Double-Draw" Festival</h2>
