@@ -5,22 +5,12 @@
   <link rel="icon" type="image/png" href="https://postimg.cc">
   <link rel="stylesheet" href="styles.css">
   <script>
-    function doSearch(txt) {
-      var cards = document.getElementsByClassName('deck-box');
-      for (var i = 0; i < cards.length; i++) {
-        var name = cards[i].getAttribute('data-name').toLowerCase();
-        var type = cards[i].getAttribute('data-type').toLowerCase();
-        if (name.includes(txt.toLowerCase()) || type.includes(txt.toLowerCase())) {
-          cards[i].style.display = '';
-        } else {
-          cards[i].style.display = 'none';
-        }
-      }
-    }
+    function sortAndSearch() {
+      var txt = document.getElementById('search').value.toLowerCase();
+      var mode = document.getElementById('sort').value;
+      var container = document.getElementById('deckContainer');
+      var list = Array.from(container.getElementsByClassName('deck-box'));
 
-    function doSort(mode) {
-      var div = document.getElementById('deckContainer');
-      var list = Array.from(div.getElementsByClassName('deck-box'));
       list.sort(function(a, b) {
         if (mode === 'az') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
         if (mode === 'za') return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name'));
@@ -30,8 +20,12 @@
         if (mode === 'oldest') return parseInt(b.getAttribute('data-age')) - parseInt(a.getAttribute('data-age'));
         return 0;
       });
+
       for (var i = 0; i < list.length; i++) {
-        div.appendChild(list[i]);
+        var name = list[i].getAttribute('data-name').toLowerCase();
+        var type = list[i].getAttribute('data-type').toLowerCase();
+        list[i].style.display = (name.includes(txt) || type.includes(txt)) ? '' : 'none';
+        container.appendChild(list[i]);
       }
     }
   </script>
@@ -44,10 +38,10 @@
     <p style="color: #FFCB05;">Select a deck card below to view the detailed strategy breakdown and card pricing.</p>
     
     <br>
-    <input type="text" placeholder="Search..." onkeyup="doSearch(this.value)" style="padding: 6px; font-size: 14px; width: 200px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
+    <input type="text" id="search" placeholder="Search..." onkeyup="sortAndSearch()" style="padding: 6px; font-size: 14px; width: 200px; background-color: #1E202E; color: white; border: 1px solid #94A3B8; margin-right: 10px;">
 
     <label style="color: white; font-family: Arial; font-weight: bold;">Sort: </label>
-    <select onchange="doSort(this.value)" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
+    <select id="sort" onchange="sortAndSearch()" style="padding: 5px; font-size: 14px; font-weight: bold; background-color: #1E202E; color: #FFCB05; border: 1px solid #FFCB05;">
       <option value="none">Default Order</option>
       <option value="az">Name: A to Z</option>
       <option value="za">Name: Z to A</option>
